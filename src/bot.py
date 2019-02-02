@@ -19,10 +19,8 @@ async def on_ready():
 # Define cogs to load
 startup_extensions = [
 	"cogs.help",
-	"cogs.owner",
-	"cogs.moderation",
-	"cogs.utility",
-	"cogs.fun"
+	"cogs.fun",
+	"cogs.hashing"
 ]
 
 # Load cogs

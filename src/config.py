@@ -6,6 +6,8 @@ CONFIG = "{}config.json".format(FOLDER)
 SERVERCONF = "{}servers.json".format(FOLDER)
 SECRET = "{}secret.json".format(FOLDER)
 
+class serverNotFound:pass
+
 #Gets a config value
 def getConfig(server, setting):
 	if not type(server) is str:
@@ -64,12 +66,11 @@ def serverConfix(server):
 			setupServerConfig(server)
 		return True
 
-def isDisabled(server, command):
-	with open(SERVERCONF) as json_file:
-		data = json.load(json_file)
-		if command in data[server.id]['disabled']:
-			return True
-		return False
+def getPrefix(server):
+	try:
+		return getConfig(server, "prefix")
+	except:
+		return getUConfig("prefix")
 
 def getSecret(key):
 	try:
