@@ -13,21 +13,10 @@ class Help():
 		"""
 
 		embed = discord.Embed(title="Command list", description="Command categories.", color=0xffd700)
-		#embed.add_field(name=":ab: Text commands", value="`{0.prefix}{0.invoked_with} text`".format(ctx), inline=True)
 		embed.add_field(name=":tada: Fun commands", value="`{0.prefix}{0.invoked_with} fun`".format(ctx), inline=True)
-		#embed.add_field(name=":desktop: Utility commands", value="`{0.prefix}{0.invoked_with} utility`".format(ctx), inline=True)
 		embed.add_field(name=":hash: Hashing/encoding", value="`{0.prefix}{0.invoked_with} encoding`".format(ctx), inline=True)
 		embed.set_footer(text="This bot was made by @dnorhoj#1337")
 		await ctx.send(embed=embed)
-
-	"""@help.group()
-	async def text(self, ctx):
-		embed = discord.Embed(title="Text command list", description="Here are some commands to try in the chat", color=0xffd700)
-		embed.add_field(name="Empty", value="Empty command", inline=True)
-		embed.add_field(name="Empty", value="Empty command", inline=True)
-		embed.add_field(name="Empty", value="Empty command", inline=True)
-		embed.set_footer(text="This bot was made by @dnorhoj#1337")
-		await ctx.send(embed=embed)"""
 	
 	@help.group()
 	async def fun(self, ctx):
