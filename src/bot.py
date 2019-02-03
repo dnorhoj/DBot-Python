@@ -16,6 +16,10 @@ async def on_ready():
 	---Info---""".replace("\t", "").format(bot.user))
 	await bot.change_presence(activity=discord.Game("idk | +help"))
 
+@bot.command()
+async def oof(ctx):
+	print(ctx.prefix)
+
 # Define cogs to load
 startup_extensions = [
 	"cogs.help",
