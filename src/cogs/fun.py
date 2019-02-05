@@ -57,19 +57,8 @@ class Example():
 				i=0
 			res += "||:{}:||".format(map[coordinates[c]])
 			i+=1
-
-		def reactioncheck(reaction, user):
-			return user == ctx.author and str(reaction.emoji) in list('👍💣')
-
-		msg = await ctx.send(res)
-		[await msg.add_reaction(v) for v in list('👍💣')]
-		try:
-			reaction = await self.bot.wait_for('reaction_add', timeout=time, check=reactioncheck)
-		except asyncio.TimeoutError:
-			await ctx.send("Time's up!")
-		else:
-			await ctx.send(reaction[0].emoji)
-		await msg.delete()
+		
+		await ctx.send(res)
 
 def setup(bot):
 	bot.add_cog(Example(bot))
