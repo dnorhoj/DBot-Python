@@ -6,12 +6,20 @@ class Example():
 		self.bot = bot
 
 	@commands.command()
-	async def minesweeper(self, ctx:discord.ext.commands.Context, time:int=60):
-		coordinates = {}
-		bombs = 18 # Number of bombs in game
-		gridsize = 9 # 8x8
+	async def minesweeper(self, ctx:discord.ext.commands.Context, gridsize:int=None, bombs:int=None):
+		if gridsize is None: # Not enough arguments
+			# Generate embed to send
+			embed = discord.Embed(title=":exclamation: Not enough arguments.", description="Usage: `{0.prefix}{0.invoked_with} [size] [bombs]`".format(ctx), colour=0xff0000)
+			await ctx.send(embed=embed)
+			return
+		
+		if bombs > gridsize**2:
+			embed = discord.Embed(title=":exclamation: Too many bombs.", description="Bomb amount is more than total grid.", colour=0xff0000)
+			await ctx.send(embed=embed)
+			return
 
 		# Generate coordinate system
+		coordinates = {}
 		for x in range(gridsize):
 			for y in range(gridsize):
 				coordinates[str(x)+str(y)] = "" # Define location existence

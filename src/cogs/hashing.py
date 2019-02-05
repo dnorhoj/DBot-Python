@@ -10,7 +10,9 @@ class Hashing():
 	# Base64 Commands
 	@commands.group(invoke_without_command=True, aliases=["b64"]) # Create Fallback base64 command
 	async def base64(self, ctx):
-		await ctx.send("Usage: `{}base64 [encode/decode] [text]`".format(config.getPrefix(ctx.message.guild.id)))
+		# Generate embed to send
+		embed = discord.Embed(title=":exclamation: Not enough arguments.", description="Usage: `{0.prefix}{0.invoked_with} [encode/decode] [text]`".format(ctx), colour=0xff0000)
+		await ctx.send(embed=embed)
 
 	@base64.group(name="encode", aliases=["e"]) # Base64 encoding command
 	async def b64encode(self, ctx, *, text:str):
