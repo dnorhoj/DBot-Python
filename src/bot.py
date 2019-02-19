@@ -14,13 +14,14 @@ async def on_ready():
 	Successfully started.
 	Running on user: {}
 	---Info---""".replace("\t", "").format(bot.user))
-	await bot.change_presence(activity=discord.Game("idk | +help"))
+	await bot.change_presence(game=discord.Game(name="idk | +help"))
 
 # Define cogs to load
 startup_extensions = [
 	"cogs.help",
 	"cogs.fun",
-	"cogs.hashing"
+	"cogs.hashing",
+	"cogs.music"
 ]
 
 # Load cogs
